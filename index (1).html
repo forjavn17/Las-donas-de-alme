@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Las Donas de Alme 🍩</title>
+<meta name="description" content="Mini donas artesanales hechas con amor. Pedí por WhatsApp.">
+<meta name="theme-color" content="#FF6B9D">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Donas de Alme">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink:   #FF6B9D;
+    --peach:  #FFAB76;
+    --cream:  #FFF5E6;
+    --mint:   #A8E6CF;
+    --yellow: #FFD166;
+    --white:  #FFFDF9;
+    --dark:   #2B1810;
+    --shadow: rgba(255,107,157,0.25);
+    --wa:     #25D366;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+    max-width: 430px;
+    margin: 0 auto;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+    width: 100%; max-width: 430px;
+    background: rgba(255,245,230,0.93);
+    backdrop-filter: blur(14px);
+    z-index: 999;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 13px 20px;
+    border-bottom: 1.5px solid rgba(255,107,157,0.15);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 900;
+    color: var(--pink); letter-spacing: -0.4px; line-height: 1.1;
+  }
+  .nav-logo small {
+    display: block; font-family: 'Nunito', sans-serif;
+    font-size: 0.62rem; color: var(--peach); font-weight: 700;
+    letter-spacing: 0.4px; text-transform: uppercase;
+  }
+  .nav-wa {
+    background: var(--wa); color: #fff;
+    border: none; border-radius: 50px;
+    padding: 9px 16px; font-family: 'Nunito', sans-serif;
+    font-weight: 800; font-size: 0.82rem; cursor: pointer;
+    display: flex; align-items: center; gap: 6px;
+    box-shadow: 0 4px 14px rgba(37,211,102,0.3);
+    text-decoration: none;
+  }
+
+  /* HERO */
+  #hero {
+    padding-top: 72px;
+    min-height: 100svh;
+    background: linear-gradient(155deg, #fff0f6 0%, #fff8ee 45%, #f4f0ff 100%);
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; padding-bottom: 44px;
+    position: relative; overflow: hidden;
+  }
+  .blob { position: absolute; border-radius: 50%; filter: blur(65px); opacity: 0.3; pointer-events: none; }
+  .b1 { width:260px;height:260px; background:var(--pink);  top:-90px;  right:-70px; }
+  .b2 { width:200px;height:200px; background:var(--mint);  bottom:80px;left:-80px; }
+  .b3 { width:140px;height:140px; background:var(--yellow);bottom:30px;right:10px; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,107,157,0.1); color: var(--pink);
+    border: 1.5px solid rgba(255,107,157,0.28);
+    border-radius: 50px; padding: 5px 14px;
+    font-size: 0.76rem; font-weight: 800; letter-spacing: 0.5px;
+    text-transform: uppercase; margin-top: 30px; margin-bottom: 14px;
+    animation: fadeDown 0.6s ease both;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 9.5vw, 2.9rem);
+    font-weight: 900; line-height: 1.05; color: var(--dark);
+    padding: 0 16px;
+    animation: fadeDown 0.7s ease 0.08s both;
+  }
+  .hero-title em { color: var(--pink); font-style: italic; }
+  .hero-sub {
+    font-size: 0.97rem; color: #9a7878; font-weight: 600;
+    margin: 10px 0 22px; padding: 0 32px;
+    animation: fadeDown 0.7s ease 0.16s both;
+  }
+  .donut-hero {
+    font-size: 7.5rem;
+    filter: drop-shadow(0 18px 36px rgba(255,107,157,0.38));
+    animation: fadeDown 0.7s ease 0.1s both, floatY 4s ease-in-out 1.2s infinite;
+    margin-bottom: 8px;
+  }
+  @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-13px)} }
+  @keyframes fadeDown { from{opacity:0;transform:translateY(-18px)} to{opacity:1;transform:none} }
+
+  /* PACKS HERO */
+  .packs-row {
+    display: flex; gap: 10px; justify-content: center;
+    padding: 0 16px; margin-bottom: 24px;
+    animation: fadeDown 0.7s ease 0.22s both;
+    width: 100%;
+  }
+  .pack-pill {
+    flex: 1; background: var(--white);
+    border: 2px solid rgba(255,107,157,0.18);
+    border-radius: 18px; padding: 12px 8px; text-align: center;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    cursor: pointer; transition: transform 0.2s;
+  }
+  .pack-pill:active { transform: scale(0.96); }
+  .pack-pill .pico  { font-size: 1.6rem; display: block; margin-bottom: 3px; }
+  .pack-pill .pname { font-size: 0.65rem; font-weight: 800; color: #a08080; text-transform: uppercase; letter-spacing: 0.3px; }
+  .pack-pill .pprice{ font-size: 1.05rem; font-weight: 900; color: var(--pink); display: block; margin-top: 3px; }
+
+  .hero-cta {
+    display: flex; gap: 10px; padding: 0 20px; flex-wrap: wrap;
+    justify-content: center; animation: fadeDown 0.7s ease 0.3s both;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--pink), #d93070);
+    color: #fff; border: none; border-radius: 50px;
+    padding: 14px 26px; font-family: 'Nunito', sans-serif;
+    font-size: 1rem; font-weight: 800; cursor: pointer;
+    box-shadow: 0 8px 22px var(--shadow);
+    transition: transform 0.2s; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn-primary:active { transform: scale(0.97); }
+  .btn-wa-hero {
+    background: var(--wa); color: #fff; border: none; border-radius: 50px;
+    padding: 14px 22px; font-family: 'Nunito', sans-serif;
+    font-size: 1rem; font-weight: 800; cursor: pointer;
+    box-shadow: 0 8px 22px rgba(37,211,102,0.35);
+    transition: transform 0.2s; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 7px;
+  }
+  .btn-wa-hero:active { transform: scale(0.97); }
+  .trust-row {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    margin-top: 26px; font-size: 0.78rem; color: #b09090; font-weight: 700;
+    animation: fadeDown 0.7s ease 0.38s both; padding: 0 10px;
+  }
+  .trust-row span { display: flex; align-items: center; gap: 4px; }
+
+  /* SECTIONS */
+  section { padding: 40px 20px; }
+  .sec-hdr { display: flex; align-items: baseline; gap: 10px; margin-bottom: 22px; }
+  .sec-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: var(--dark); }
+  .sec-sub { font-size: 0.78rem; color: #c09090; font-weight: 700; text-transform: uppercase; }
+
+  /* PROMOS */
+  #promos { background: linear-gradient(135deg,#fff0f6,#fffbf0); }
+  .promo-featured {
+    background: linear-gradient(135deg, #FF6B9D, #d93070);
+    border-radius: 24px; padding: 24px; color: #fff; margin-bottom: 14px;
+    position: relative; overflow: hidden;
+    box-shadow: 0 10px 32px var(--shadow);
+    cursor: pointer; transition: transform 0.2s;
+  }
+  .promo-featured:active { transform: scale(0.98); }
+  .promo-featured::before {
+    content: '🍩🍩🍩';
+    position: absolute; right: -10px; top: 50%; transform: translateY(-50%);
+    font-size: 4rem; opacity: 0.16; letter-spacing: -10px;
+  }
+  .pf-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.25); border-radius: 50px;
+    padding: 4px 12px; font-size: 0.72rem; font-weight: 900;
+    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;
+  }
+  .promo-featured h2 { font-family: 'Playfair Display',serif; font-size: 1.5rem; font-weight: 900; margin-bottom: 4px; }
+  .promo-featured p  { font-size: 0.88rem; opacity: 0.88; font-weight: 600; margin-bottom: 14px; }
+  .pf-price { font-size: 2.4rem; font-weight: 900; line-height: 1; }
+  .pf-old   { font-size: 0.85rem; opacity: 0.65; text-decoration: line-through; margin-left: 6px; }
+  .pf-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.22); border: 1.5px solid rgba(255,255,255,0.4);
+    border-radius: 50px; padding: 9px 18px;
+    font-size: 0.88rem; font-weight: 800; color: #fff;
+    margin-top: 12px; cursor: pointer; text-decoration: none;
+  }
+  .promo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .promo-mini {
+    border-radius: 20px; padding: 18px 16px; color: #fff;
+    position: relative; overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    cursor: pointer; transition: transform 0.2s; min-height: 130px;
+  }
+  .promo-mini:active { transform: scale(0.97); }
+  .promo-mini .badge { position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.25); border-radius: 50px; padding: 3px 10px; font-size: 0.68rem; font-weight: 900; }
+  .promo-mini h3 { font-size: 0.95rem; font-weight: 900; margin-bottom: 4px; }
+  .promo-mini p  { font-size: 0.72rem; opacity: 0.88; font-weight: 600; margin-bottom: 8px; }
+  .promo-mini .mp { font-size: 1.35rem; font-weight: 900; }
+  .pm-green  { background: linear-gradient(135deg,#5cd08a,#3aa870); }
+  .pm-purple { background: linear-gradient(135deg,#b088e0,#7850c0); }
+
+  /* PACKS / PRECIOS */
+  #packs { background: var(--white); }
+  .packs-cards { display: flex; flex-direction: column; gap: 14px; }
+  .pack-card {
+    background: var(--cream); border-radius: 22px;
+    display: flex; align-items: center; gap: 16px;
+    padding: 18px 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    border: 2px solid transparent;
+    position: relative; overflow: hidden;
+  }
+  .pack-card.popular { border-color: var(--pink); background: #fff8fc; }
+  .pc-badge {
+    position: absolute; top: 0; right: 20px;
+    background: var(--pink); color: #fff;
+    font-size: 0.68rem; font-weight: 900; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 0 0 10px 10px;
+  }
+  .pc-icon { font-size: 2.8rem; flex-shrink: 0; }
+  .pc-info { flex: 1; }
+  .pc-name { font-family: 'Playfair Display',serif; font-size: 1.1rem; font-weight: 700; }
+  .pc-desc { font-size: 0.78rem; color: #b09090; font-weight: 600; margin: 2px 0 6px; }
+  .pc-price { font-size: 1.6rem; font-weight: 900; color: var(--pink); }
+  .pc-unit  { font-size: 0.7rem; color: #c0a0a0; font-weight: 700; }
+  .pack-order-btn {
+    background: var(--wa); color: #fff; border: none;
+    border-radius: 50px; padding: 10px 16px;
+    font-family: 'Nunito',sans-serif; font-size: 0.82rem; font-weight: 900;
+    cursor: pointer; white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(37,211,102,0.3);
+    transition: transform 0.15s; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 5px;
+    flex-shrink: 0;
+  }
+  .pack-order-btn:active { transform: scale(0.95); }
+
+  /* PEDIDO */
+  #order { background: linear-gradient(155deg,#fff5e6,#f5f0ff); }
+  .order-box {
+    background: var(--white); border-radius: 24px;
+    padding: 22px; box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+  }
+  .o-step { margin-bottom: 20px; border-bottom: 1.5px dashed #f0e0e0; padding-bottom: 18px; }
+  .o-step:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .step-lbl { font-size: 0.72rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; color: var(--pink); margin-bottom: 12px; }
+
+  .pack-selector { display: flex; flex-direction: column; gap: 10px; }
+  .ps-item {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--cream); border-radius: 16px; padding: 14px 16px;
+    border: 2px solid transparent; cursor: pointer; transition: all 0.2s;
+  }
+  .ps-item.active { border-color: var(--pink); background: #fff5fb; }
+  .ps-left { display: flex; align-items: center; gap: 12px; }
+  .ps-ico  { font-size: 1.8rem; }
+  .ps-name { font-weight: 900; font-size: 0.95rem; }
+  .ps-sub  { font-size: 0.75rem; color: #b09090; font-weight: 600; }
+  .ps-price{ font-weight: 900; font-size: 1.2rem; color: var(--pink); }
+
+  .flavor-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .fchip {
+    background: #f5eeee; color: #9a7070;
+    border: 2px solid transparent; border-radius: 50px;
+    padding: 7px 14px; font-size: 0.82rem; font-weight: 800;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .fchip.on { background: #fff0f6; color: var(--pink); border-color: var(--pink); }
+
+  .extras-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .extra-item {
+    background: #f9f5ff; border: 2px solid transparent;
+    border-radius: 14px; padding: 10px 12px;
+    cursor: pointer; transition: all 0.2s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .extra-item.on { background: #fff0f6; border-color: var(--pink); }
+  .ei { font-size: 1.3rem; }
+  .et { font-size: 0.78rem; font-weight: 800; }
+  .ep { font-size: 0.7rem; color: var(--pink); font-weight: 700; }
+
+  .order-summary {
+    background: linear-gradient(135deg,#fff0f6,#fff8ee);
+    border-radius: 16px; padding: 16px; margin-bottom: 18px;
+  }
+  .sum-row { display: flex; justify-content: space-between; font-size: 0.88rem; font-weight: 700; color: #9a7070; margin-bottom: 6px; }
+  .sum-row.total { color: var(--dark); font-size: 1.05rem; font-weight: 900; padding-top: 10px; border-top: 1.5px dashed #f0d0d0; margin-top: 10px; }
+
+  /* BIG WA BUTTON */
+  .wa-big {
+    width: 100%; background: var(--wa); color: #fff;
+    border: none; border-radius: 18px; padding: 18px;
+    font-family: 'Nunito', sans-serif; font-size: 1.1rem; font-weight: 900;
+    cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+    box-shadow: 0 10px 28px rgba(37,211,102,0.38);
+    transition: transform 0.2s; text-decoration: none;
+  }
+  .wa-big:active { transform: scale(0.97); }
+
+  /* GALERÍA */
+  #gallery { background: var(--cream); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+  .g-item {
+    border-radius: 14px; aspect-ratio: 1;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.6rem; cursor: pointer;
+    transition: transform 0.22s;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    position: relative; overflow: hidden;
+  }
+  .g-item:active { transform: scale(0.95); }
+  .g-item.tall { grid-row: span 2; font-size: 3.5rem; aspect-ratio: unset; }
+  .g-item.wide { grid-column: span 2; }
+  .gb1 { background: linear-gradient(135deg,#ffd6e7,#ffb3cf); }
+  .gb2 { background: linear-gradient(135deg,#ffe8d0,#ffd0a0); }
+  .gb3 { background: linear-gradient(135deg,#d6f0e7,#a8e6cf); }
+  .gb4 { background: linear-gradient(135deg,#e8d6f0,#c9b8e8); }
+  .gb5 { background: linear-gradient(135deg,#fff3cc,#ffd166); }
+  .g-item::after {
+    content: attr(data-lbl);
+    position: absolute; bottom:0; left:0; right:0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.48));
+    color: #fff; font-size: 0.62rem; font-weight: 800;
+    padding: 14px 6px 6px; text-align: center;
+  }
+
+  /* HISTORIA */
+  #story { background: linear-gradient(155deg,#2B1810,#4a2820); color: #fff; }
+  #story .sec-title { color: var(--peach); }
+  .story-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 22px; margin-bottom: 14px;
+  }
+  .story-icon { font-size: 2.2rem; margin-bottom: 8px; }
+  .story-card h3 { font-size: 1rem; font-weight: 900; margin-bottom: 6px; color: var(--peach); }
+  .story-card p  { font-size: 0.86rem; line-height: 1.65; opacity: 0.85; }
+  .stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 18px; }
+  .stat-item { background: rgba(255,255,255,0.07); border-radius: 14px; padding: 14px 8px; text-align: center; }
+  .stat-num { font-family: 'Playfair Display',serif; font-size: 1.7rem; font-weight: 900; color: var(--pink); }
+  .stat-lbl { font-size: 0.68rem; font-weight: 700; opacity: 0.72; margin-top: 2px; }
+
+  /* SOCIAL */
+  #social { background: var(--white); }
+  .social-banner {
+    background: linear-gradient(135deg, var(--pink), #d93070);
+    border-radius: 24px; padding: 28px; text-align: center; color: #fff;
+  }
+  .social-banner h2 { font-family: 'Playfair Display',serif; font-size: 1.45rem; font-weight: 900; margin-bottom: 8px; }
+  .social-banner p  { font-size: 0.88rem; font-weight: 600; opacity: 0.9; margin-bottom: 20px; }
+  .social-links { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .slink {
+    background: rgba(255,255,255,0.2); border: 1.5px solid rgba(255,255,255,0.3);
+    color: #fff; border-radius: 50px; padding: 10px 18px;
+    font-size: 0.85rem; font-weight: 800; cursor: pointer;
+    display: flex; align-items: center; gap: 6px; text-decoration: none;
+  }
+  .slink:active { background: rgba(255,255,255,0.35); }
+
+  /* FOOTER */
+  footer { background: var(--dark); color: rgba(255,255,255,0.55); text-align: center; padding: 26px 20px; font-size: 0.78rem; font-weight: 600; }
+  .f-logo { font-family: 'Playfair Display',serif; font-size: 1.2rem; font-weight: 900; color: var(--pink); margin-bottom: 6px; }
+
+  /* FLOAT WA */
+  .wa-float {
+    position: fixed; bottom: 24px; right: 18px;
+    width: 60px; height: 60px;
+    background: var(--wa); color: #fff; border-radius: 50%;
+    border: none; font-size: 1.8rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 22px rgba(37,211,102,0.48);
+    z-index: 998; text-decoration: none;
+    animation: waPulse 2.8s infinite;
+  }
+  @keyframes waPulse {
+    0%,100% { box-shadow: 0 6px 22px rgba(37,211,102,0.48); }
+    50%      { box-shadow: 0 6px 30px rgba(37,211,102,0.72), 0 0 0 12px rgba(37,211,102,0.12); }
+  }
+
+  /* TOAST */
+  .toast {
+    position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%) translateY(80px);
+    background: var(--dark); color: #fff;
+    padding: 12px 22px; border-radius: 50px;
+    font-size: 0.86rem; font-weight: 800; z-index: 3000;
+    display: flex; align-items: center; gap: 8px;
+    transition: transform 0.35s cubic-bezier(0.32,0.72,0,1), opacity 0.3s;
+    opacity: 0; white-space: nowrap;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── INSTALL BANNER ── */
+  .install-banner {
+    position: fixed; bottom: 0; left: 50%; transform: translateX(-50%) translateY(120%);
+    width: 100%; max-width: 430px;
+    background: var(--white);
+    border-top: 1.5px solid rgba(255,107,157,0.15);
+    border-radius: 24px 24px 0 0;
+    padding: 20px 20px 32px;
+    z-index: 1500;
+    box-shadow: 0 -8px 32px rgba(0,0,0,0.12);
+    transition: transform 0.4s cubic-bezier(0.32,0.72,0,1);
+  }
+  .install-banner.show { transform: translateX(-50%) translateY(0); }
+  .ib-handle { width: 40px; height: 4px; background: #e8d8d8; border-radius: 2px; margin: 0 auto 16px; }
+  .ib-row { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+  .ib-icon {
+    width: 56px; height: 56px; border-radius: 16px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--pink), #d93070);
+    display: flex; align-items: center; justify-content: center; font-size: 2rem;
+    box-shadow: 0 4px 14px var(--shadow);
+  }
+  .ib-text h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 900; color: var(--dark); }
+  .ib-text p  { font-size: 0.78rem; color: #b09090; font-weight: 600; margin-top: 2px; }
+  .ib-btns { display: flex; gap: 10px; }
+  .btn-install {
+    flex: 1; background: linear-gradient(135deg, var(--pink), #d93070);
+    color: #fff; border: none; border-radius: 14px; padding: 15px;
+    font-family: 'Nunito', sans-serif; font-size: 0.95rem; font-weight: 900;
+    cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 7px;
+    box-shadow: 0 6px 18px var(--shadow); transition: transform 0.2s;
+  }
+  .btn-install:active { transform: scale(0.97); }
+  .btn-dismiss {
+    background: #f5eeee; color: #a08080; border: none; border-radius: 14px;
+    padding: 14px 18px; font-family: 'Nunito', sans-serif; font-size: 0.88rem; font-weight: 800;
+    cursor: pointer;
+  }
+
+  /* iOS instruction sheet */
+  .ios-sheet {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.55);
+    display: flex; align-items: flex-end; justify-content: center;
+    z-index: 2500; opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .ios-sheet.open { opacity: 1; pointer-events: all; }
+  .ios-inner {
+    background: var(--white); border-radius: 26px 26px 0 0;
+    padding: 24px 22px 36px; width: 100%; max-width: 430px;
+    transform: translateY(100%);
+    transition: transform 0.38s cubic-bezier(0.32,0.72,0,1);
+  }
+  .ios-sheet.open .ios-inner { transform: translateY(0); }
+  .ios-handle { width: 40px; height: 4px; background: #e0d0d0; border-radius: 2px; margin: 0 auto 18px; }
+  .ios-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 900; color: var(--dark); margin-bottom: 6px; }
+  .ios-sub   { font-size: 0.84rem; color: #b09090; font-weight: 600; margin-bottom: 22px; }
+  .ios-step  { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+  .ios-num {
+    width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--pink), #d93070);
+    color: #fff; font-size: 0.82rem; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ios-txt { font-size: 0.9rem; font-weight: 700; color: var(--dark); padding-top: 5px; line-height: 1.55; }
+  .ios-txt span { color: var(--pink); font-weight: 900; }
+  .ios-close {
+    width: 100%; background: #f5eeee; color: #a08080;
+    border: none; border-radius: 14px; padding: 14px;
+    font-family: 'Nunito', sans-serif; font-size: 0.9rem; font-weight: 800;
+    cursor: pointer; margin-top: 6px;
+  }
+
+  /* NAV install button */
+  .nav-install-btn {
+    background: linear-gradient(135deg, var(--pink), #d93070);
+    color: #fff; border: none; border-radius: 50px;
+    padding: 8px 14px; font-family: 'Nunito', sans-serif;
+    font-size: 0.78rem; font-weight: 900; cursor: pointer;
+    display: none; align-items: center; gap: 5px;
+    box-shadow: 0 4px 12px var(--shadow);
+    transition: transform 0.2s;
+  }
+  .nav-install-btn.visible { display: flex; }
+  .nav-install-btn:active { transform: scale(0.95); }
+
+  /* Hero install chip */
+  .hero-install-chip {
+    display: none; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.75); backdrop-filter: blur(8px);
+    border: 1.5px solid rgba(255,107,157,0.25);
+    border-radius: 50px; padding: 10px 20px;
+    cursor: pointer; transition: transform 0.2s;
+    margin-top: 16px;
+    font-size: 0.88rem; font-weight: 800; color: var(--dark);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    animation: fadeDown 0.7s ease 0.45s both;
+  }
+  .hero-install-chip.visible { display: flex; }
+  .hero-install-chip:active { transform: scale(0.97); }
+  .hic-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--pink); animation: blink 1.8s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.25} }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    Las Donas de Alme
+    <small>🍩 Artesanales · Hechas con amor</small>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center;">
+    <button class="nav-install-btn" id="nav-install-btn" onclick="triggerInstall()">
+      📲 Instalar App
+    </button>
+    <a href="https://wa.me/5492964454949?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20Las%20Donas%20de%20Alme%20🍩" target="_blank" class="nav-wa">
+      💬 Pedir
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+
+  <div class="hero-badge">✨ Artesanales · Freshly Made</div>
+
+  <h1 class="hero-title">
+    <em>Las Donas</em><br>de Alme 🍩
+  </h1>
+  <p class="hero-sub">Mini donas artesanales hechas con amor y sabores que enamoran. ¡El antojo perfecto!</p>
+
+  <div class="donut-hero">🍩</div>
+
+  <div class="packs-row">
+    <div class="pack-pill" onclick="scrollToOrder()">
+      <span class="pico">🍩</span>
+      <span class="pname">Pack x3</span>
+      <span class="pprice">$1.500</span>
+    </div>
+    <div class="pack-pill" onclick="scrollToOrder()">
+      <span class="pico">🍩🍩</span>
+      <span class="pname">Media doc.</span>
+      <span class="pprice">$3.000</span>
+    </div>
+    <div class="pack-pill" onclick="scrollToOrder()">
+      <span class="pico">📦</span>
+      <span class="pname">Docena</span>
+      <span class="pprice">$5.000</span>
+    </div>
+  </div>
+
+  <div class="hero-cta">
+    <button class="btn-primary" onclick="scrollToOrder()">🛒 Armar pedido</button>
+    <a class="btn-wa-hero" href="https://wa.me/5492964454949?text=Hola!%20Quiero%20pedir%20Las%20Donas%20de%20Alme%20🍩" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.77.753 5.36 2.065 7.575L2 30l6.61-2.03A13.93 13.93 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z" fill="white"/><path d="M11.5 9.5c-.3-.7-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.4 3.9 1.6 4.2c.2.3 2.8 4.4 6.9 6 .9.4 1.7.6 2.2.7.9.2 1.8.2 2.4.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.7.2-1.8-.1-.1-.4-.2-.7-.4s-2.3-1.1-2.6-1.2c-.3-.1-.6-.2-.9.2-.3.4-.9 1.2-1.2 1.5-.2.3-.4.3-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-2-1.8-2.4-.2-.4 0-.6.2-.7.2-.2.4-.4.6-.6.2-.2.2-.4.3-.6.1-.2 0-.5-.1-.7s-.9-2.1-1.2-2.8z" fill="#25D366"/></svg>
+      WhatsApp
+    </a>
+  </div>
+
+  <div class="trust-row">
+    <span>⭐ 5.0 Rating</span>
+    <span>🕐 Entrega rápida</span>
+    <span>❤️ Clientas felices</span>
+  </div>
+
+  <div class="hero-install-chip" id="hero-install-chip" onclick="triggerInstall()">
+    <span class="hic-dot"></span>
+    📲 Instalar app en tu celular — gratis
+  </div>
+</section>
+
+<!-- PROMOS -->
+<section id="promos" class="reveal">
+  <div class="sec-hdr">
+    <h2 class="sec-title">🔥 Promos destacadas</h2>
+    <span class="sec-sub">Especiales</span>
+  </div>
+
+  <div class="promo-featured" onclick="pedirPromo('Combo Docena Surtida - 12 mini donas a elección - $5.000')">
+    <div class="pf-tag">⭐ La más pedida</div>
+    <h2>Docena Surtida</h2>
+    <p>12 mini donas a elección de sabores · La favorita de todas 💕</p>
+    <div>
+      <span class="pf-price">$5.000</span>
+    </div>
+    <a class="pf-cta" href="https://wa.me/5492964454949?text=Hola!%20Quiero%20el%20Combo%20Docena%20Surtida%20🍩%20por%20favor!" target="_blank">
+      💬 Pedir este combo
+    </a>
+  </div>
+
+  <div class="promo-grid">
+    <div class="promo-mini pm-green" onclick="pedirPromo('Pack x3 - $1.500')">
+      <span class="badge">🍩</span>
+      <h3>Pack x3</h3>
+      <p>3 mini donas a tu gusto</p>
+      <div class="mp">$1.500</div>
+    </div>
+    <div class="promo-mini pm-purple" onclick="pedirPromo('Media Docena - 6 donas - $3.000')">
+      <span class="badge">✨</span>
+      <h3>Media Docena</h3>
+      <p>6 donas a elección</p>
+      <div class="mp">$3.000</div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKS -->
+<section id="packs" class="reveal">
+  <div class="sec-hdr">
+    <h2 class="sec-title">📦 Nuestros packs</h2>
+    <span class="sec-sub">Precios</span>
+  </div>
+  <div class="packs-cards">
+
+    <div class="pack-card">
+      <div class="pc-icon">🍩</div>
+      <div class="pc-info">
+        <div class="pc-name">Pack x3</div>
+        <div class="pc-desc">3 mini donas · ideal para darse un gustito</div>
+        <div class="pc-price">$1.500</div>
+        <div class="pc-unit">$500 cada una</div>
+      </div>
+      <a class="pack-order-btn" href="https://wa.me/5492964454949?text=Hola!%20Quiero%20el%20Pack%20x3%20de%20mini%20donas%20🍩%20Precio%3A%20%241.500" target="_blank">
+        💬 Pedir
+      </a>
+    </div>
+
+    <div class="pack-card popular">
+      <div class="pc-badge">⭐ Popular</div>
+      <div class="pc-icon">🍩🍩</div>
+      <div class="pc-info">
+        <div class="pc-name">Media Docena</div>
+        <div class="pc-desc">6 mini donas · para compartir (o no 😏)</div>
+        <div class="pc-price">$3.000</div>
+        <div class="pc-unit">$500 cada una</div>
+      </div>
+      <a class="pack-order-btn" href="https://wa.me/5492964454949?text=Hola!%20Quiero%20la%20Media%20Docena%20de%20mini%20donas%20🍩%20Precio%3A%20%243.000" target="_blank">
+        💬 Pedir
+      </a>
+    </div>
+
+    <div class="pack-card">
+      <div class="pc-icon">📦</div>
+      <div class="pc-info">
+        <div class="pc-name">Docena</div>
+        <div class="pc-desc">12 mini donas · ideal para reuniones y regalos</div>
+        <div class="pc-price">$5.000</div>
+        <div class="pc-unit">≈$416 cada una · ¡mejor precio!</div>
+      </div>
+      <a class="pack-order-btn" href="https://wa.me/5492964454949?text=Hola!%20Quiero%20la%20Docena%20de%20mini%20donas%20🍩%20Precio%3A%20%245.000" target="_blank">
+        💬 Pedir
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- PEDIDO PERSONALIZADO -->
+<section id="order" class="reveal">
+  <div class="sec-hdr">
+    <h2 class="sec-title">🛒 Armá tu pedido</h2>
+  </div>
+  <div class="order-box">
+
+    <div class="o-step">
+      <div class="step-lbl">Paso 1 · Elegí tu pack</div>
+      <div class="pack-selector">
+        <div class="ps-item" onclick="selectPack(this,'Pack x3',1500,3)">
+          <div class="ps-left">
+            <span class="ps-ico">🍩</span>
+            <div><div class="ps-name">Pack x3</div><div class="ps-sub">3 mini donas</div></div>
+          </div>
+          <div class="ps-price">$1.500</div>
+        </div>
+        <div class="ps-item active" onclick="selectPack(this,'Media Docena',3000,6)">
+          <div class="ps-left">
+            <span class="ps-ico">🍩🍩</span>
+            <div><div class="ps-name">Media Docena</div><div class="ps-sub">6 mini donas</div></div>
+          </div>
+          <div class="ps-price">$3.000</div>
+        </div>
+        <div class="ps-item" onclick="selectPack(this,'Docena',5000,12)">
+          <div class="ps-left">
+            <span class="ps-ico">📦</span>
+            <div><div class="ps-name">Docena</div><div class="ps-sub">12 mini donas</div></div>
+          </div>
+          <div class="ps-price">$5.000</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="o-step">
+      <div class="step-lbl">Paso 2 · Elegí tus sabores</div>
+      <div class="flavor-chips">
+        <div class="fchip on" onclick="toggleF(this,'Chocolate 🍫')">🍫 Chocolate</div>
+        <div class="fchip" onclick="toggleF(this,'Glaseada ✨')">✨ Glaseada</div>
+        <div class="fchip" onclick="toggleF(this,'Dulce de Leche 🤎')">🤎 Dulce de Leche</div>
+        <div class="fchip" onclick="toggleF(this,'Oreo 🖤')">🖤 Oreo</div>
+        <div class="fchip" onclick="toggleF(this,'Frutilla 🍓')">🍓 Frutilla</div>
+        <div class="fchip" onclick="toggleF(this,'Vainilla 🤍')">🤍 Vainilla</div>
+        <div class="fchip" onclick="toggleF(this,'Limón 🍋')">🍋 Limón</div>
+        <div class="fchip" onclick="toggleF(this,'Caramelo 🧡')">🧡 Caramelo</div>
+      </div>
+    </div>
+
+    <div class="o-step">
+      <div class="step-lbl">Paso 3 · Extras (opcional)</div>
+      <div class="extras-grid">
+        <div class="extra-item" onclick="toggleExtra(this,'Caja de regalo 🎁')">
+          <span class="ei">🎁</span><div><div class="et">Caja regalo</div><div class="ep">consultar</div></div>
+        </div>
+        <div class="extra-item" onclick="toggleExtra(this,'Tarjeta personalizada 💌')">
+          <span class="ei">💌</span><div><div class="et">Tarjeta</div><div class="ep">consultar</div></div>
+        </div>
+        <div class="extra-item" onclick="toggleExtra(this,'Sprinkles 🎊')">
+          <span class="ei">🎊</span><div><div class="et">Sprinkles</div><div class="ep">consultar</div></div>
+        </div>
+        <div class="extra-item" onclick="toggleExtra(this,'Salsa de chocolate 🍫')">
+          <span class="ei">🍫</span><div><div class="et">Salsa choco</div><div class="ep">consultar</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="o-step">
+      <div class="step-lbl">Resumen</div>
+      <div class="order-summary">
+        <div class="sum-row"><span>Pack</span><span id="sum-pack">Media Docena (6 donas)</span></div>
+        <div class="sum-row"><span>Sabores</span><span id="sum-flavors">Chocolate 🍫</span></div>
+        <div class="sum-row"><span>Extras</span><span id="sum-extras">Ninguno</span></div>
+        <div class="sum-row total"><span>💰 Total</span><span id="sum-total">$3.000</span></div>
+      </div>
+      <a class="wa-big" href="#" onclick="sendWA(event)" target="_blank">
+        <svg width="26" height="26" viewBox="0 0 32 32" fill="none"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.77.753 5.36 2.065 7.575L2 30l6.61-2.03A13.93 13.93 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z" fill="white"/><path d="M11.5 9.5c-.3-.7-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.4 3.9 1.6 4.2c.2.3 2.8 4.4 6.9 6 .9.4 1.7.6 2.2.7.9.2 1.8.2 2.4.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.7.2-1.8-.1-.1-.4-.2-.7-.4s-2.3-1.1-2.6-1.2c-.3-.1-.6-.2-.9.2-.3.4-.9 1.2-1.2 1.5-.2.3-.4.3-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-2-1.8-2.4-.2-.4 0-.6.2-.7.2-.2.4-.4.6-.6.2-.2.2-.4.3-.6.1-.2 0-.5-.1-.7s-.9-2.1-1.2-2.8z" fill="#25D366"/></svg>
+        Pedir por WhatsApp 🍩
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="gallery" class="reveal">
+  <div class="sec-hdr">
+    <h2 class="sec-title">📸 Galería</h2>
+    <span class="sec-sub">Instagram ✨</span>
+  </div>
+  <div class="gallery-grid">
+    <div class="g-item tall gb1" data-lbl="Chocolate Glam">🍩</div>
+    <div class="g-item gb2" data-lbl="Glaseadas Pastel">🍩</div>
+    <div class="g-item gb3" data-lbl="Dulce de Leche">🍩</div>
+    <div class="g-item wide gb4" data-lbl="Box Docena Especial">🍩🍩</div>
+    <div class="g-item gb5" data-lbl="Oreo Love">🍩</div>
+    <div class="g-item gb1" data-lbl="Frutilla & Cream">🍩</div>
+    <div class="g-item gb2" data-lbl="Surtidas Colores">🍩</div>
+  </div>
+</section>
+
+<!-- HISTORIA -->
+<section id="story" class="reveal">
+  <div class="sec-hdr">
+    <h2 class="sec-title">💛 Nuestra historia</h2>
+  </div>
+  <div class="story-card">
+    <div class="story-icon">🏠</div>
+    <h3>Nació en casa, creció con amor</h3>
+    <p>Las Donas de Alme es un emprendimiento que nació de la pasión por la repostería artesanal. Lo que empezó como un hobby se transformó en el proyecto dulce más especial, hecho con dedicación y cariño en cada dona.</p>
+  </div>
+  <div class="story-card">
+    <div class="story-icon">🍩</div>
+    <h3>Receta propia, sabor único</h3>
+    <p>Cada mini dona es preparada con ingredientes seleccionados y una receta que fue perfeccionada con tiempo y amor. Masa esponjosa, coberturas artesanales y sabores que no vas a encontrar en ningún otro lado.</p>
+  </div>
+  <div class="story-card">
+    <div class="story-icon">🌟</div>
+    <h3>Tu sonrisa es nuestra motivación</h3>
+    <p>Trabajamos con pedidos personalizados para que cada ocasión sea especial — cumpleaños, regalos, reuniones o simplemente porque sí. Cada cajita que sale de nuestra cocina lleva amor adentro. 💕</p>
+  </div>
+  <div class="stat-row">
+    <div class="stat-item"><div class="stat-num">❤️</div><div class="stat-lbl">Hecho con amor</div></div>
+    <div class="stat-item"><div class="stat-num">8+</div><div class="stat-lbl">Sabores únicos</div></div>
+    <div class="stat-item"><div class="stat-num">100%</div><div class="stat-lbl">Artesanal</div></div>
+  </div>
+</section>
+
+<!-- REDES -->
+<section id="social" class="reveal">
+  <div class="social-banner">
+    <h2>¡Seguinos en redes! 📲</h2>
+    <p>Compartí tus fotos con <strong>#LasDonaDeAlme</strong> y aparecé en nuestra historia ✨</p>
+    <div class="social-links">
+      <a href="#" class="slink">📸 Instagram</a>
+      <a href="#" class="slink">🎵 TikTok</a>
+      <a href="https://wa.me/5492964454949" target="_blank" class="slink">💬 WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">Las Donas de Alme 🍩</div>
+  <p>Hechas con amor · Pedidos por WhatsApp</p>
+  <p style="margin-top:6px;opacity:0.35">© 2025 Las Donas de Alme</p>
+</footer>
+
+<!-- FLOATING WA -->
+<a class="wa-float" href="https://wa.me/5492964454949?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20Las%20Donas%20de%20Alme%20🍩" target="_blank">💬</a>
+
+<!-- INSTALL BANNER (Android/Chrome) -->
+<div class="install-banner" id="install-banner">
+  <div class="ib-handle"></div>
+  <div class="ib-row">
+    <div class="ib-icon">🍩</div>
+    <div class="ib-text">
+      <h3>Las Donas de Alme</h3>
+      <p>Agregá la app a tu pantalla de inicio · gratis, sin App Store</p>
+    </div>
+  </div>
+  <div class="ib-btns">
+    <button class="btn-install" onclick="doInstall()">
+      📲 Instalar App
+    </button>
+    <button class="btn-dismiss" onclick="dismissBanner()">Ahora no</button>
+  </div>
+</div>
+
+<!-- iOS INSTRUCTION SHEET -->
+<div class="ios-sheet" id="ios-sheet" onclick="closeIosSheet(event)">
+  <div class="ios-inner">
+    <div class="ios-handle"></div>
+    <div class="ios-title">📲 Instalá la app en tu iPhone</div>
+    <p class="ios-sub">Es gratis y queda en tu pantalla de inicio como una app real</p>
+
+    <div class="ios-step">
+      <div class="ios-num">1</div>
+      <div class="ios-txt">Tocá el ícono de <span>Compartir</span> (el cuadrado con la flechita hacia arriba) en la barra de Safari</div>
+    </div>
+    <div class="ios-step">
+      <div class="ios-num">2</div>
+      <div class="ios-txt">Deslizá hacia abajo y tocá <span>"Agregar a pantalla de inicio"</span></div>
+    </div>
+    <div class="ios-step">
+      <div class="ios-num">3</div>
+      <div class="ios-txt">Tocá <span>"Agregar"</span> en la esquina superior derecha. ¡Listo! 🎉</div>
+    </div>
+
+    <button class="ios-close" onclick="closeIosSheet()">Entendido 👍</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">🍩</div>
+
+<script>
+  const WA = '5492964454949';
+  let selectedPack    = { name:'Media Docena', price:3000, qty:6 };
+  let selectedFlavors = ['Chocolate 🍫'];
+  let selectedExtras  = [];
+
+  // ── PWA INSTALL ──
+  let deferredPrompt = null;
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isInStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+  // Register service worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    });
+  }
+
+  // Listen for Android/Chrome install prompt
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    showInstallUI();
+  });
+
+  function showInstallUI() {
+    if (isInStandalone) return;
+    document.getElementById('nav-install-btn').classList.add('visible');
+    document.getElementById('hero-install-chip').classList.add('visible');
+    // Auto-show banner after 4s on first visit
+    if (!sessionStorage.getItem('installDismissed')) {
+      setTimeout(() => {
+        document.getElementById('install-banner').classList.add('show');
+      }, 4000);
+    }
+  }
+
+  // iOS: always show chip/button (no beforeinstallprompt on Safari)
+  if (isIOS && !isInStandalone) {
+    setTimeout(showInstallUI, 800);
+  }
+
+  function triggerInstall() {
+    if (deferredPrompt) {
+      document.getElementById('install-banner').classList.add('show');
+    } else if (isIOS) {
+      document.getElementById('install-banner').classList.remove('show');
+      document.getElementById('ios-sheet').classList.add('open');
+    } else {
+      // Fallback: show iOS-style instructions
+      document.getElementById('ios-sheet').classList.add('open');
+    }
+  }
+
+  function doInstall() {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((result) => {
+        if (result.outcome === 'accepted') {
+          showToast('🍩 ¡App instalada! Ya está en tu pantalla de inicio');
+          document.getElementById('nav-install-btn').classList.remove('visible');
+          document.getElementById('hero-install-chip').classList.remove('visible');
+        }
+        deferredPrompt = null;
+        dismissBanner();
+      });
+    } else if (isIOS) {
+      dismissBanner();
+      document.getElementById('ios-sheet').classList.add('open');
+    }
+  }
+
+  function dismissBanner() {
+    document.getElementById('install-banner').classList.remove('show');
+    sessionStorage.setItem('installDismissed', '1');
+  }
+
+  function closeIosSheet(e) {
+    if (!e || e.target === document.getElementById('ios-sheet'))
+      document.getElementById('ios-sheet').classList.remove('open');
+  }
+
+  // Detect if already installed
+  window.addEventListener('appinstalled', () => {
+    showToast('🍩 ¡App instalada con éxito!');
+    document.getElementById('nav-install-btn').classList.remove('visible');
+    document.getElementById('hero-install-chip').classList.remove('visible');
+    document.getElementById('install-banner').classList.remove('show');
+  });
+
+  // ── ORDER ──
+  function selectPack(el, name, price, qty) {
+    document.querySelectorAll('.ps-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+    selectedPack = { name, price, qty };
+    updateSummary();
+  }
+  function toggleF(el, name) {
+    el.classList.toggle('on');
+    if (el.classList.contains('on')) {
+      if (!selectedFlavors.includes(name)) selectedFlavors.push(name);
+    } else {
+      selectedFlavors = selectedFlavors.filter(f => f !== name);
+    }
+    updateSummary();
+  }
+  function toggleExtra(el, name) {
+    el.classList.toggle('on');
+    if (el.classList.contains('on')) {
+      if (!selectedExtras.includes(name)) selectedExtras.push(name);
+    } else {
+      selectedExtras = selectedExtras.filter(e => e !== name);
+    }
+    updateSummary();
+  }
+  function updateSummary() {
+    document.getElementById('sum-pack').textContent    = `${selectedPack.name} (${selectedPack.qty} donas)`;
+    document.getElementById('sum-flavors').textContent = selectedFlavors.length ? selectedFlavors.join(', ') : 'A confirmar';
+    document.getElementById('sum-extras').textContent  = selectedExtras.length  ? selectedExtras.join(', ')  : 'Ninguno';
+    document.getElementById('sum-total').textContent   = `$${selectedPack.price.toLocaleString('es-AR')}`;
+  }
+  updateSummary();
+
+  function sendWA(e) {
+    e.preventDefault();
+    const flavors = selectedFlavors.length ? selectedFlavors.join(', ') : 'A confirmar';
+    const extras  = selectedExtras.length  ? selectedExtras.join(', ')  : 'Sin extras';
+    const msg = encodeURIComponent(
+      `🍩 *PEDIDO - Las Donas de Alme*\n\n` +
+      `📦 Pack: ${selectedPack.name} (${selectedPack.qty} donas)\n` +
+      `🎨 Sabores: ${flavors}\n` +
+      `✨ Extras: ${extras}\n` +
+      `💰 Total: $${selectedPack.price.toLocaleString('es-AR')}\n\n` +
+      `Por favor confirmen disponibilidad y entrega. ¡Gracias! 💕`
+    );
+    window.open(`https://wa.me/${WA}?text=${msg}`, '_blank');
+  }
+
+  function pedirPromo(desc) {
+    const msg = encodeURIComponent(
+      `🍩 *PEDIDO - Las Donas de Alme*\n\nQuiero: ${desc}\n\nPor favor confirmen disponibilidad y entrega. ¡Gracias! 💕`
+    );
+    window.open(`https://wa.me/${WA}?text=${msg}`, '_blank');
+  }
+
+  function scrollToOrder() { document.getElementById('order').scrollIntoView({ behavior:'smooth' }); }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2800);
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
